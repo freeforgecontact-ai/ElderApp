@@ -28,7 +28,7 @@ let private fr =
           "role.donneur.desc",  "Commerce, restaurant, jardin, particulier"
           "role.organisme",     "Je reçois"
           "role.organisme.desc","Banque alimentaire, organisme communautaire"
-          "todo.scaffold",      "TODO (scaffold local) — brancher Open Food Network / back léger (Workers + D1) pour la mise en relation temps réel et les notifications push." ]
+          "todo.scaffold",      "Version hors-ligne — tout fonctionne directement sur ton appareil. La mise en relation en temps réel entre donneurs et organismes arrive prochainement." ]
 
 let private en =
     dict
@@ -51,7 +51,7 @@ let private en =
           "role.donneur.desc",  "Store, restaurant, garden, individual"
           "role.organisme",     "I receive"
           "role.organisme.desc","Food bank, community organization"
-          "todo.scaffold",      "TODO (local scaffold) — connect Open Food Network / lightweight back (Workers + D1) for real-time matching and push notifications." ]
+          "todo.scaffold",      "Offline version — everything works right on your device. Real-time matching between donors and organizations is coming soon." ]
 
 /// Traduit une clé selon la langue courante (renvoie la clé si absente).
 let t (cle: string) =

@@ -415,8 +415,8 @@ let private vueMesDons (model: Model) (dispatch: Msg -> unit) =
                       prop.style [ style.marginTop (length.rem 1) ]
                       prop.children
                           [ Html.h2 "Impact (session locale)"
-                            Html.p (sprintf "Disponibles : %d  |  Recuperes : %d" nbDispo nbRec)
-                            Html.p [ prop.className "recolte-todo"; prop.text "TODO : tableau de bord d'impact cumulé (kg sauvés, repas équivalents) — v2 avec back léger." ] ] ] ] ]
+                            Html.p (sprintf "Disponibles : %d  |  Récupérés : %d" nbDispo nbRec)
+                            Html.p [ prop.className "recolte-todo"; prop.text "Le suivi d'impact cumulé (kilos sauvés, repas équivalents) arrivera avec la version connectée." ] ] ] ] ]
 
 // ---- Navigation basse ----
 let private nav (model: Model) (dispatch: Msg -> unit) =
