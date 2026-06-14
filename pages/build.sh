@@ -7,7 +7,7 @@ rm -rf "$OUT"; mkdir -p "$OUT"
 
 apps=(
   "01-Bouclier-anti-arnaque|01|Bouclier anti-arnaque"
-  # "02-Securite-violence-conjugale|02|Notes perso"   # RETIREE du public : audit de securite en cours
+  "02-Securite-violence-conjugale|02|Notes perso"
   "03-Boussole-nouveaux-arrivants|03|Boussole"
   "04-Aines-anti-isolement|04|Lien"
   "05-Alphabetisation-adulte|05|Mots du quotidien"

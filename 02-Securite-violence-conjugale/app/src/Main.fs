@@ -1,15 +1,19 @@
 module Main
 
+open Fable.Core
 open Elmish
 open Elmish.React
 
-// Abonnement à l'état réseau (online/offline) -> met à jour le bandeau.
+// Touche Échap = sortie rapide (geste de sécurité, fonctionne partout).
+[<Emit("document.addEventListener('keydown', function(e){ if (e.key === 'Escape') { $0(); } })")>]
+let private ecouterEchap (cb: unit -> unit) : unit = jsNative
+
 let private subscription _model =
     let sub dispatch =
-        State.ecouterReseau (fun () -> dispatch (State.ReseauChange(State.estEnLigne ())))
+        ecouterEchap (fun () -> dispatch State.SortieRapide)
         { new System.IDisposable with
             member _.Dispose() = () }
-    [ [ "reseau" ], sub ]
+    [ [ "echap" ], sub ]
 
 Program.mkProgram State.init State.update View.view
 |> Program.withSubscription subscription
