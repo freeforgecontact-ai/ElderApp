@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0F4C81">
+<title>Apps-Solidaires — 8 applications libres et gratuites</title>
+<link rel="stylesheet" href="./tokens.css">
+<link rel="stylesheet" href="./components.css">
+<style>
+  .acc-hero { background: linear-gradient(160deg, var(--bleu-700), var(--bleu-900)); color: var(--texte-inverse); padding: var(--esp-7) var(--esp-4); text-align: center; }
+  .acc-hero h1 { color: var(--texte-inverse); font-size: var(--t-3xl); margin-bottom: var(--esp-3); }
+  .acc-hero p { color: var(--bleu-100); max-width: 40rem; margin-inline: auto; }
+  .acc-grille { display: grid; gap: var(--esp-4); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+  .acc-carte { display: flex; flex-direction: column; gap: var(--esp-2); text-decoration: none; color: var(--texte); }
+  .acc-carte:hover { box-shadow: var(--ombre-2); transform: translateY(-2px); }
+  .acc-ico { font-size: 2.4rem; }
+  .acc-nom { font-size: var(--t-lg); font-weight: var(--gras-fort); }
+  .acc-desc { color: var(--texte-doux); font-size: var(--t-sm); }
+  .acc-pied { text-align:center; color: var(--texte-faible); padding: var(--esp-6) var(--esp-4); }
+  .acc-pied a { color: var(--lien); }
+</style>
+</head>
+<body>
+<header class="sol-barre">
+  <span class="sol-marque"><span class="sol-pastille">AS</span> Apps-Solidaires</span>
+</header>
+
+<section class="acc-hero">
+  <h1>8 applications libres, gratuites et hors-ligne</h1>
+  <p>Conçues pour les personnes que le marché ignore ou fait payer le plus cher. Code ouvert, sans pub, sans collecte de données. Clique une app pour l'essayer.</p>
+</section>
+
+<main class="sol-contenu" id="contenu" style="max-width:64rem">
+  <div class="acc-grille">
+    <a class="sol-carte acc-carte" href="./01/"><span class="acc-ico">🛡️</span><span class="acc-nom">Bouclier anti-arnaque</span><span class="acc-desc">Aider les aînés à reconnaître la fraude et prévenir un proche avant de payer.</span></a>
+    <a class="sol-carte acc-carte" href="./02/"><span class="acc-ico">📝</span><span class="acc-nom">Notes perso (Sécurité)</span><span class="acc-desc">Plan de sortie et ressources discrètes en cas de violence conjugale.</span></a>
+    <a class="sol-carte acc-carte" href="./03/"><span class="acc-ico">🧭</span><span class="acc-nom">Boussole</span><span class="acc-desc">Guide d'établissement par statut pour les nouveaux arrivants.</span></a>
+    <a class="sol-carte acc-carte" href="./04/"><span class="acc-ico">💛</span><span class="acc-nom">Lien</span><span class="acc-desc">Check-in quotidien et appel d'un proche, pour les aînés isolés.</span></a>
+    <a class="sol-carte acc-carte" href="./05/"><span class="acc-ico">🌱</span><span class="acc-nom">Mots du quotidien</span><span class="acc-desc">Apprendre à lire par la voix et les images, sans stigmatisation.</span></a>
+    <a class="sol-carte acc-carte" href="./06/"><span class="acc-ico">🌽</span><span class="acc-nom">Récolte</span><span class="acc-desc">Relier les surplus alimentaires aux organismes — don gratuit.</span></a>
+    <a class="sol-carte acc-carte" href="./07/"><span class="acc-ico">🌊</span><span class="acc-nom">Ancrage</span><span class="acc-desc">Soutien immédiat en détresse : ancrage, plan de sécurité, ressources.</span></a>
+    <a class="sol-carte acc-carte" href="./08/"><span class="acc-ico">🌅</span><span class="acc-nom">Second départ</span><span class="acc-desc">Accompagner la sortie de détention, de refuge ou de dépendance.</span></a>
+  </div>
+</main>
+
+<footer class="acc-pied">
+  <p>Logiciel libre (MIT) — <a href="https://github.com/freeforgecontact-ai/ElderApp">code source sur GitHub</a>. Construit avec F# / Fable. Aux couleurs de PGRG.</p>
+</footer>
+</body>
+</html>
