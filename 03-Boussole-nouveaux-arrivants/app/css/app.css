@@ -1,0 +1,124 @@
+/* Styles propres à la Boussole nouveaux arrivants.
+   Le gros du style vient de tokens.css + components.css (design system). */
+
+/* ---- Héros d'accueil ---- */
+.boussole-hero {
+  background: linear-gradient(160deg, var(--bleu-700), var(--bleu-800));
+  color: var(--texte-inverse);
+  padding: var(--esp-6) var(--esp-4);
+  text-align: center;
+}
+.boussole-hero h1 { color: var(--texte-inverse); }
+.boussole-hero p  { color: var(--bleu-100); max-width: 32rem; margin-inline: auto; }
+
+/* ---- Sélection de statut (onboarding) ---- */
+.boussole-statuts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: var(--esp-3);
+}
+.boussole-statut-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-2);
+  padding: var(--esp-4) var(--esp-3);
+  border: 2px solid var(--bordure);
+  border-radius: var(--radius-md);
+  background: var(--fond-carte);
+  cursor: pointer;
+  font-size: var(--texte-sm);
+  font-weight: 600;
+  color: var(--texte-principal);
+  text-align: center;
+  transition: border-color 0.15s, background 0.15s;
+  min-height: 6rem;
+}
+.boussole-statut-btn:hover,
+.boussole-statut-btn:focus-visible {
+  border-color: var(--primaire);
+  background: var(--bleu-50);
+  outline: 2px solid var(--primaire);
+  outline-offset: 2px;
+}
+.boussole-statut-btn[aria-pressed="true"] {
+  border-color: var(--primaire);
+  background: var(--bleu-50);
+  color: var(--primaire);
+}
+.boussole-statut-btn .boussole-ico { font-size: 2rem; line-height: 1; }
+
+/* ---- Checklist ---- */
+.boussole-horizon {
+  border-left: 3px solid var(--accent);
+  padding-left: var(--esp-4);
+  margin-block: var(--esp-4);
+}
+.boussole-horizon__titre {
+  font-size: var(--texte-sm);
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--esp-2);
+}
+
+/* ---- Annuaire 211 ---- */
+.boussole-categorie-tabs {
+  display: flex;
+  gap: var(--esp-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--esp-4);
+}
+.boussole-categorie-btn {
+  padding: var(--esp-2) var(--esp-3);
+  border: 1px solid var(--bordure);
+  border-radius: var(--radius-full);
+  background: var(--fond-carte);
+  font-size: var(--texte-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+.boussole-categorie-btn[aria-pressed="true"] {
+  background: var(--primaire);
+  color: var(--texte-inverse);
+  border-color: var(--primaire);
+}
+
+.boussole-ressource {
+  border: 1px solid var(--bordure);
+  border-radius: var(--radius-md);
+  padding: var(--esp-4);
+  background: var(--fond-carte);
+}
+.boussole-ressource + .boussole-ressource { margin-top: var(--esp-3); }
+.boussole-ressource__nom  { font-weight: 700; margin-bottom: var(--esp-1); }
+.boussole-ressource__meta { font-size: var(--texte-sm); color: var(--texte-secondaire); }
+.boussole-ressource__tel  {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-1);
+  margin-top: var(--esp-2);
+  font-weight: 600;
+  color: var(--primaire);
+  text-decoration: none;
+}
+.boussole-ressource__tel:hover { text-decoration: underline; }
+
+/* ---- Courriers IRCC ---- */
+.boussole-type-lettre {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: var(--esp-3);
+  margin-bottom: var(--esp-4);
+}
+
+/* ---- Disclaimer ---- */
+.boussole-disclaimer {
+  font-size: var(--texte-sm);
+  color: var(--texte-secondaire);
+  border-top: 1px solid var(--bordure);
+  padding-top: var(--esp-3);
+  margin-top: var(--esp-4);
+}

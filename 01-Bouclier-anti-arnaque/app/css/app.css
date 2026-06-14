@@ -1,0 +1,23 @@
+/* Styles propres au Bouclier anti-arnaque.
+   Le gros du style vient de tokens.css + components.css (design system). */
+
+.bouclier-hero {
+  background: linear-gradient(160deg, var(--bleu-700), var(--bleu-800));
+  color: var(--texte-inverse);
+  padding: var(--esp-6) var(--esp-4);
+  text-align: center;
+}
+.bouclier-hero h1 { color: var(--texte-inverse); }
+.bouclier-hero p { color: var(--bleu-100); max-width: 32rem; margin-inline: auto; }
+
+/* Résultat de vérification d'un numéro */
+.resultat { border-radius: var(--radius-lg); padding: var(--esp-5); border: 2px solid var(--bordure); }
+.resultat--sur    { border-color: var(--succes); background: var(--succes-fond); }
+.resultat--danger { border-color: var(--danger); background: var(--danger-fond); }
+.resultat__ico { font-size: 2.5rem; }
+
+/* Pause "avant de payer" */
+.pause-q { display: flex; gap: var(--esp-3); align-items: center; padding: var(--esp-4); border: 1px solid var(--bordure); border-radius: var(--radius-md); }
+
+/* Quiz */
+.quiz-options { display: grid; gap: var(--esp-3); }

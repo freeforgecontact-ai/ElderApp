@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr-CA" data-theme="clair">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0F4C81">
+<title>Apps-Solidaires — Design system</title>
+<link rel="stylesheet" href="./tokens.css">
+<link rel="stylesheet" href="./components.css">
+<style>
+  /* styles propres à la page de démo */
+  .demo-section { margin-block: var(--esp-7); }
+  .demo-section > h2 { padding-bottom: var(--esp-2); border-bottom: 2px solid var(--bordure); }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: var(--esp-3); }
+  .swatch { border: 1px solid var(--bordure); border-radius: var(--radius-md); overflow: hidden; background: var(--fond-carte); }
+  .swatch__c { height: 64px; }
+  .swatch__l { padding: var(--esp-2) var(--esp-3); font-size: var(--t-sm); }
+  .swatch__l b { display:block; font-family: var(--police-mono); font-size: var(--t-xs); color: var(--texte-faible); font-weight: var(--gras-normal); }
+  .demo-grid { display: grid; gap: var(--esp-4); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .demo-toolbar { position: sticky; top: 0; z-index: 10; }
+  .demo-toolbar .sol-rangee { gap: var(--esp-4); }
+</style>
+</head>
+<body>
+<a class="sol-skip" href="#contenu">Aller au contenu</a>
+
+<header class="sol-barre demo-toolbar">
+  <span class="sol-marque"><span class="sol-pastille">AS</span> Apps-Solidaires</span>
+  <span class="sol-offline"><span class="sol-point" id="pt-reseau"></span><span id="lbl-reseau">en ligne</span></span>
+</header>
+
+<main class="sol-contenu" id="contenu">
+
+  <p class="sol-muet">Design system partagé par les 8 applications — couleurs <b>ia.pgrg.ca</b>, accessibilité WCAG 2.2, états complets. Tout est piloté par <code>tokens.css</code>.</p>
+
+  <!-- Réglages de démonstration -->
+  <section class="sol-carte sol-carte--plate">
+    <div class="sol-rangee sol-entre">
+      <div class="sol-rangee">
+        <button class="sol-btn sol-btn--fantome" onclick="basculeTheme()">🌗 Thème clair / sombre</button>
+        <button class="sol-btn sol-btn--fantome" onclick="cycleEchelle()">🔠 Taille du texte</button>
+      </div>
+      <label class="sol-switch">
+        <input type="checkbox" id="sw-carre" onchange="toggleCarre(this.checked)">
+        <span class="sol-switch__piste"><span class="sol-switch__bille"></span></span>
+        <span>Coins carrés (0 coin rond)</span>
+      </label>
+    </div>
+  </section>
+
+  <!-- Palette -->
+  <section class="demo-section">
+    <h2>Palette</h2>
+    <h3>Marque</h3>
+    <div class="swatches">
+      <div class="swatch"><div class="swatch__c" style="background:var(--c-primary)"></div><div class="swatch__l">Primaire<b>#0F4C81</b></div></div>
+      <div class="swatch"><div class="swatch__c" style="background:var(--c-accent)"></div><div class="swatch__l">Accent or<b>#F4B41A</b></div></div>
+      <div class="swatch"><div class="swatch__c" style="background:var(--bleu-800)"></div><div class="swatch__l">Bleu 800<b>#0B3A63</b></div></div>
+      <div class="swatch"><div class="swatch__c" style="background:var(--bleu-500)"></div><div class="swatch__l">Bleu 500<b>#1E73B8</b></div></div>
+      <div class="swatch"><div class="swatch__c" style="background:var(--bleu-100)"></div><div class="swatch__l">Bleu 100<b>#DCE9F4</b></div></div>
+    </div>
+    <h3 style="margin-top:var(--esp-5)">Sémantique</h3>
+    <div class="swatches">
+      <div class="swatch"><div class="swatch__c" style="background:var(--succes)"></div><div class="swatch__l">Succès<b>#1E7F4F</b></div></div>
+      <div class="swatch"><div class="swatch__c" style="background:var(--alerte)"></div><div class="swatch__l">Alerte<b>#B66A00</b></div></div>
+      <div class="swatch"><div class="swatch__c" style="background:var(--danger)"></div><div class="swatch__l">Danger<b>#C0392B</b></div></div>
+      <div class="swatch"><div class="swatch__c" style="background:var(--noir)"></div><div class="swatch__l">Texte<b>#14181D</b></div></div>
+      <div class="swatch"><div class="swatch__c" style="background:var(--gris-200);border-bottom:1px solid var(--bordure)"></div><div class="swatch__l">Bordure<b>#E1E6EB</b></div></div>
+    </div>
+  </section>
+
+  <!-- Typographie -->
+  <section class="demo-section">
+    <h2>Typographie</h2>
+    <div class="sol-carte">
+      <h1 class="sol-mb-0">Titre H1 — 0 coin rond <button class="sol-vocal" aria-label="Lire à voix haute" onclick="lire(this.closest('.sol-carte'))">🔊</button></h1>
+      <h2>Titre H2</h2>
+      <h3>Titre H3</h3>
+      <p>Corps de texte à 18px, interligne 1.6, pensé pour la lisibilité. La police de base est Inter avec repli système. <a href="#">Voici un lien</a> dans une phrase.</p>
+      <p class="sol-muet sol-mb-0">Texte secondaire / discret.</p>
+    </div>
+  </section>
+
+  <!-- Boutons -->
+  <section class="demo-section">
+    <h2>Boutons &amp; états</h2>
+    <div class="sol-rangee">
+      <button class="sol-btn">Primaire</button>
+      <button class="sol-btn sol-btn--accent">Accent</button>
+      <button class="sol-btn sol-btn--danger">Danger</button>
+      <button class="sol-btn sol-btn--succes">Succès</button>
+      <button class="sol-btn sol-btn--fantome">Fantôme</button>
+      <button class="sol-btn sol-btn--texte">Lien</button>
+      <button class="sol-btn" disabled>Désactivé</button>
+    </div>
+    <div class="sol-rangee" style="margin-top:var(--esp-4)">
+      <button class="sol-btn sol-btn--lg sol-btn--accent">Grand bouton</button>
+      <button class="sol-btn sol-btn--xl">Très grand (aînés)</button>
+    </div>
+  </section>
+
+  <!-- Gros boutons -->
+  <section class="demo-section">
+    <h2>Gros boutons illustrés</h2>
+    <div class="demo-grid">
+      <button class="sol-grosbouton sol-grosbouton--danger"><span class="sol-ico" aria-hidden="true">🛑</span> Je vérifie avant de payer</button>
+      <button class="sol-grosbouton sol-grosbouton--accent"><span class="sol-ico" aria-hidden="true">📞</span> Appeler ma fille</button>
+      <button class="sol-grosbouton"><span class="sol-ico" aria-hidden="true">✅</span> Je vais bien aujourd'hui</button>
+    </div>
+  </section>
+
+  <!-- Cartes -->
+  <section class="demo-section">
+    <h2>Cartes</h2>
+    <div class="demo-grid">
+      <article class="sol-carte sol-carte--actionnable">
+        <h3 class="sol-carte__titre">Carte actionnable</h3>
+        <p class="sol-mb-0">Survole-moi : élévation et léger soulèvement.</p>
+      </article>
+      <article class="sol-carte">
+        <div class="sol-rangee sol-entre"><h3 class="sol-carte__titre sol-mb-0">Avec badges</h3><span class="sol-badge sol-badge--succes">À jour</span></div>
+        <p class="sol-mb-0"><span class="sol-badge">Bleu</span> <span class="sol-badge sol-badge--accent">Or</span> <span class="sol-badge sol-badge--danger">Danger</span></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Alertes -->
+  <section class="demo-section">
+    <h2>Alertes</h2>
+    <div class="sol-pile">
+      <div class="sol-alerte"><span class="sol-alerte__ico" aria-hidden="true">ℹ️</span><div><b>Information.</b> Donnée mise en cache, consultable hors-ligne.</div></div>
+      <div class="sol-alerte sol-alerte--succes"><span class="sol-alerte__ico" aria-hidden="true">✅</span><div><b>Succès.</b> Ton proche a été prévenu.</div></div>
+      <div class="sol-alerte sol-alerte--alerte"><span class="sol-alerte__ico" aria-hidden="true">⚠️</span><div><b>Attention.</b> Ce numéro ressemble à une fraude connue.</div></div>
+      <div class="sol-alerte sol-alerte--danger"><span class="sol-alerte__ico" aria-hidden="true">🛑</span><div><b>Danger.</b> Ne fais aucun paiement avant d'avoir vérifié.</div></div>
+    </div>
+  </section>
+
+  <!-- Formulaire -->
+  <section class="demo-section">
+    <h2>Champs &amp; contrôles</h2>
+    <div class="sol-carte">
+      <div class="sol-champ">
+        <label class="sol-label" for="d-num">Numéro à vérifier</label>
+        <span class="sol-aide" id="d-num-aide">Colle ou tape un numéro de téléphone.</span>
+        <input class="sol-input" id="d-num" inputmode="tel" placeholder="819 555-0199" aria-describedby="d-num-aide">
+      </div>
+      <div class="sol-champ">
+        <label class="sol-label" for="d-sel">Type de situation</label>
+        <select class="sol-select" id="d-sel">
+          <option>Appel suspect</option><option>Texto suspect</option><option>Courriel suspect</option>
+        </select>
+      </div>
+      <label class="sol-switch" style="margin-bottom:var(--esp-4)">
+        <input type="checkbox" checked>
+        <span class="sol-switch__piste"><span class="sol-switch__bille"></span></span>
+        <span>Prévenir un proche en cas d'alerte</span>
+      </label>
+      <button class="sol-btn sol-btn--accent sol-btn--bloc">Vérifier</button>
+    </div>
+  </section>
+
+  <!-- Checklist + progression -->
+  <section class="demo-section">
+    <h2>Checklist &amp; progression</h2>
+    <div class="sol-carte">
+      <div class="sol-progres" style="margin-bottom:var(--esp-4)"><div class="sol-progres__barre" style="width:66%"></div></div>
+      <ul class="sol-liste">
+        <li class="sol-liste__item sol-liste__item--fait"><span class="sol-check" aria-hidden="true">✓</span><span class="sol-liste__txt">Obtenir une pièce d'identité</span></li>
+        <li class="sol-liste__item sol-liste__item--fait"><span class="sol-check" aria-hidden="true">✓</span><span class="sol-liste__txt">Ouvrir un compte bancaire</span></li>
+        <li class="sol-liste__item"><span class="sol-check" aria-hidden="true"></span><span class="sol-liste__txt">Demander l'aide sociale</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Picto -->
+  <section class="demo-section">
+    <h2>Texte + pictogramme (voix d'abord)</h2>
+    <div class="sol-carte sol-rangee" style="justify-content:space-between">
+      <span class="sol-picto"><span class="sol-ico" aria-hidden="true">💊</span> Lire mon ordonnance</span>
+      <button class="sol-vocal" aria-label="Lire à voix haute" onclick="lire(this.previousElementSibling)">🔊</button>
+    </div>
+  </section>
+
+</main>
+
+<nav class="sol-nav" aria-label="Navigation principale (démo)">
+  <a class="sol-nav__item" href="#" aria-current="page"><span class="sol-ico" aria-hidden="true">🏠</span>Accueil</a>
+  <a class="sol-nav__item" href="#"><span class="sol-ico" aria-hidden="true">🔎</span>Vérifier</a>
+  <a class="sol-nav__item" href="#"><span class="sol-ico" aria-hidden="true">🎓</span>Apprendre</a>
+  <a class="sol-nav__item" href="#"><span class="sol-ico" aria-hidden="true">👤</span>Proches</a>
+</nav>
+
+<script>
+  function basculeTheme(){ const h=document.documentElement; h.dataset.theme = h.dataset.theme==='sombre' ? 'clair' : 'sombre'; }
+  const echelles=['normal','grande','enorme']; let ei=0;
+  function cycleEchelle(){ ei=(ei+1)%echelles.length; const v=echelles[ei]; const h=document.documentElement; if(v==='normal') delete h.dataset.echelle; else h.dataset.echelle=v; }
+  function toggleCarre(on){ document.documentElement.style.setProperty('--radius-base', on ? '0' : '1'); }
+  function lire(el){ try{ const u=new SpeechSynthesisUtterance(el.innerText); u.lang='fr-CA'; speechSynthesis.cancel(); speechSynthesis.speak(u);}catch(e){} }
+  function majReseau(){ const on=navigator.onLine; document.getElementById('pt-reseau').className='sol-point'+(on?'':' sol-point--hors'); document.getElementById('lbl-reseau').textContent=on?'en ligne':'hors-ligne'; }
+  addEventListener('online',majReseau); addEventListener('offline',majReseau); majReseau();
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# ---- Dépendances et artefacts de build (régénérables) ----
+**/node_modules/
+**/bin/
+**/obj/
+**/dist/
+**/fable_modules/
+**/*.fs.js
+**/*.fs.js.map
+.fable/
+
+# ---- Dossiers de travail temporaires (test/capture) ----
+_serve/
+_captures/
+
+# ---- OS / éditeurs ----
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+.DS_Store
+Thumbs.db
+*.log

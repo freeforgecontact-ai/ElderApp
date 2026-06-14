@@ -1,0 +1,84 @@
+/* Styles propres à l'app Sécurité (violence conjugale).
+   Le gros du style vient de tokens.css + components.css (design system partagé).
+   On n'overwrite jamais les variables de couleur marque (#0F4C81 / #F4B41A). */
+
+/* ---- Héro d'accueil ---- */
+
+.sec-hero {
+  background: linear-gradient(160deg, var(--bleu-700), var(--bleu-800));
+  color: var(--texte-inverse);
+  padding: var(--esp-6) var(--esp-4);
+  text-align: center;
+}
+.sec-hero h1 { color: var(--texte-inverse); }
+.sec-hero p  { color: var(--bleu-100); max-width: 32rem; margin-inline: auto; }
+
+/* ---- Mise en garde de sécurité (details/summary) ---- */
+
+.sec-mise-en-garde {
+  border: 2px solid var(--alerte);
+  border-radius: var(--radius-md);
+  padding: var(--esp-3) var(--esp-4);
+  background: var(--alerte-fond);
+}
+.sec-mise-en-garde summary {
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--texte);
+  list-style: disclosure-closed;
+}
+.sec-mise-en-garde[open] summary { list-style: disclosure-open; }
+.sec-mise-en-garde__corps {
+  padding-top: var(--esp-3);
+}
+.sec-mise-en-garde__corps ul {
+  margin: var(--esp-2) 0 var(--esp-2) var(--esp-4);
+  padding: 0;
+}
+.sec-mise-en-garde__corps li {
+  margin-block: var(--esp-1);
+}
+
+/* ---- Plan de sortie : en-têtes de catégorie ---- */
+
+.sec-categorie {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--texte-2);
+  margin-bottom: var(--esp-3);
+}
+
+/* ---- Ressources ---- */
+
+.sec-ressource__nom {
+  font-size: var(--text-base);
+  font-weight: 700;
+}
+.sec-ressource__desc {
+  color: var(--texte-2);
+  font-size: var(--text-sm);
+  margin-block: var(--esp-2);
+}
+.sec-ressource__actions {
+  margin-top: var(--esp-3);
+}
+
+/* ---- Zone de danger (effacement) ---- */
+
+.sec-danger-zone {
+  border-color: var(--danger);
+}
+.sec-confirmation-texte {
+  font-weight: 600;
+  color: var(--danger);
+}
+
+/* ---- Texte de version ---- */
+
+.sec-version {
+  font-size: var(--text-xs);
+  color: var(--texte-3);
+  margin-top: var(--esp-2);
+}

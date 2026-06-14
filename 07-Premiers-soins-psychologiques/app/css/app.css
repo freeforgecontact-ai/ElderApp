@@ -1,0 +1,203 @@
+/* Styles propres à Ancrage — Premiers soins psychologiques.
+   Le gros du style vient de tokens.css + components.css (design system).
+   Palette : calme, apaisante. Aucune gamification de la détresse. */
+
+/* ---- Héros d'accueil ---- */
+.ancrage-hero {
+  background: linear-gradient(160deg, var(--bleu-700), var(--bleu-800));
+  color: var(--texte-inverse);
+  padding: var(--esp-6) var(--esp-4);
+  text-align: center;
+}
+.ancrage-hero h1 { color: var(--texte-inverse); }
+.ancrage-hero p  { color: var(--bleu-100); max-width: 32rem; margin-inline: auto; }
+
+/* Mention légale discrète sous le héros */
+.ancrage-cadre {
+  background: var(--bleu-800);
+  color: var(--bleu-200);
+  font-size: var(--t-sm);
+  text-align: center;
+  padding: var(--esp-3) var(--esp-4);
+  border-bottom: 1px solid var(--bleu-600);
+}
+
+/* ---- Bouton de crise permanent dans la barre ---- */
+.ancrage-btn-crise {
+  --_bg: var(--danger);
+  --_fg: var(--blanc);
+  display: inline-flex; align-items: center; gap: var(--esp-2);
+  padding: var(--esp-2) var(--esp-4);
+  min-height: 40px;
+  font: inherit; font-weight: var(--gras-fort); font-size: var(--t-sm);
+  color: var(--_fg); background: var(--_bg);
+  border: none; border-radius: var(--radius-md);
+  cursor: pointer; white-space: nowrap;
+  transition: filter var(--duree-1) var(--courbe), transform var(--duree-1) var(--courbe);
+}
+.ancrage-btn-crise:hover  { filter: brightness(1.08); }
+.ancrage-btn-crise:active { transform: translateY(1px); filter: brightness(0.96); }
+.ancrage-btn-crise .sol-ico { font-size: 1.1rem; }
+
+/* ---- Modale de ressources de crise ---- */
+.ancrage-modale-fond {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(8, 42, 71, 0.72);
+  display: flex; align-items: flex-end; justify-content: center;
+  padding: 0;
+  animation: fondu-in var(--duree-2) var(--courbe);
+}
+@keyframes fondu-in { from { opacity: 0; } to { opacity: 1; } }
+
+.ancrage-modale {
+  background: var(--fond-carte);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: var(--esp-6) var(--esp-5) calc(var(--esp-6) + env(safe-area-inset-bottom));
+  width: 100%; max-width: 44rem;
+  box-shadow: var(--ombre-3);
+  animation: glisser-haut var(--duree-2) var(--courbe);
+}
+@keyframes glisser-haut {
+  from { transform: translateY(80px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.ancrage-modale h2 { font-size: var(--t-xl); margin-bottom: var(--esp-2); }
+.ancrage-modale p  { color: var(--texte-doux); font-size: var(--t-sm); margin-bottom: var(--esp-5); }
+
+.ancrage-ressource-liste { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--esp-3); }
+.ancrage-ressource-item  { display: flex; align-items: center; gap: var(--esp-3); }
+.ancrage-ressource-lien  {
+  flex: 1;
+  display: flex; flex-direction: column;
+  padding: var(--esp-4) var(--esp-5);
+  background: var(--bleu-50); color: var(--bleu-800);
+  border: 2px solid var(--bleu-200); border-radius: var(--radius-md);
+  text-decoration: none; font-weight: var(--gras-fort);
+  min-height: var(--cible-large);
+  transition: border-color var(--duree-1) var(--courbe), background var(--duree-1) var(--courbe);
+}
+.ancrage-ressource-lien:hover { border-color: var(--c-primary); background: var(--bleu-100); }
+.ancrage-ressource-lien:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; box-shadow: var(--anneau-focus); }
+.ancrage-ressource-nom   { font-size: var(--t-md); }
+.ancrage-ressource-desc  { font-size: var(--t-sm); font-weight: var(--gras-normal); color: var(--texte-doux); margin-top: 2px; }
+
+/* ---- Exercices d'ancrage ---- */
+.ancrage-exo-grille { display: grid; gap: var(--esp-4); }
+
+/* Animation de respiration — cercle pulsant */
+.ancrage-respiration {
+  display: flex; flex-direction: column; align-items: center; gap: var(--esp-5);
+  padding: var(--esp-5) 0;
+}
+.ancrage-cercle-resp {
+  width: 140px; height: 140px;
+  border-radius: var(--radius-pleine);
+  background: radial-gradient(circle, var(--bleu-200) 0%, var(--bleu-400) 100%);
+  box-shadow: 0 0 0 0 rgba(15, 76, 129, 0.3);
+  transition: transform var(--duree-2) var(--courbe), box-shadow var(--duree-2) var(--courbe);
+  display: grid; place-items: center;
+  font-size: var(--t-xl); font-weight: var(--gras-extra); color: var(--blanc);
+}
+.ancrage-cercle-resp--inspirer {
+  transform: scale(1.28);
+  box-shadow: 0 0 0 18px rgba(15, 76, 129, 0.12);
+}
+.ancrage-cercle-resp--retenir {
+  transform: scale(1.28);
+  box-shadow: 0 0 0 12px rgba(244, 180, 26, 0.22);
+  background: radial-gradient(circle, var(--bleu-300) 0%, var(--bleu-500) 100%);
+}
+.ancrage-cercle-resp--expirer {
+  transform: scale(1.0);
+  box-shadow: 0 0 0 4px rgba(15, 76, 129, 0.06);
+}
+
+.ancrage-phase-label {
+  font-size: var(--t-lg); font-weight: var(--gras-fort);
+  color: var(--c-primary); text-align: center;
+}
+.ancrage-phase-compteur {
+  font-size: var(--t-3xl); font-weight: var(--gras-extra);
+  color: var(--bleu-700); line-height: 1; min-width: 2.5rem; text-align: center;
+}
+.ancrage-cycles { font-size: var(--t-sm); color: var(--texte-doux); }
+
+/* 5-4-3-2-1 */
+.ancrage-sens-titre { font-size: var(--t-xl); font-weight: var(--gras-extra); color: var(--c-primary); }
+.ancrage-sens-etapes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--esp-3); }
+.ancrage-sens-etape  {
+  display: flex; gap: var(--esp-3); align-items: flex-start;
+  padding: var(--esp-4); border-radius: var(--radius-md);
+  background: var(--fond-carte); border: 1px solid var(--bordure);
+}
+.ancrage-sens-num {
+  width: 36px; height: 36px; flex: none;
+  border-radius: var(--radius-pleine); background: var(--bleu-100); color: var(--bleu-800);
+  display: grid; place-items: center; font-weight: var(--gras-extra);
+}
+.ancrage-sens-etape--active { border-color: var(--c-primary); background: var(--bleu-50); }
+.ancrage-sens-etape--active .ancrage-sens-num { background: var(--c-primary); color: var(--blanc); }
+.ancrage-sens-etape--faite  { border-color: var(--succes); }
+.ancrage-sens-etape--faite  .ancrage-sens-num { background: var(--succes); color: var(--blanc); }
+
+/* ---- Plan de sécurité ---- */
+.ancrage-plan-section { margin-bottom: var(--esp-6); }
+.ancrage-plan-section h3 { color: var(--c-primary); margin-bottom: var(--esp-3); }
+.ancrage-liste-edit { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--esp-2); }
+.ancrage-item-edit  {
+  display: flex; align-items: center; gap: var(--esp-3);
+  padding: var(--esp-3) var(--esp-4);
+  background: var(--fond-carte); border: 1px solid var(--bordure); border-radius: var(--radius-md);
+  min-height: var(--cible-min);
+}
+.ancrage-item-edit__txt { flex: 1; color: var(--texte); }
+.ancrage-item-edit__sup {
+  background: none; border: none; color: var(--danger); font-size: 1.2rem;
+  cursor: pointer; padding: var(--esp-1) var(--esp-2); border-radius: var(--radius-sm);
+  min-width: var(--cible-min); min-height: var(--cible-min); display: grid; place-items: center;
+}
+.ancrage-item-edit__sup:hover { background: var(--danger-fond); }
+.ancrage-ajouter-rangee { display: flex; gap: var(--esp-2); margin-top: var(--esp-2); }
+.ancrage-ajouter-rangee .sol-input { flex: 1; }
+
+/* ---- Journal d'humeur ---- */
+.ancrage-humeur-echelle {
+  display: flex; gap: var(--esp-2); justify-content: center; margin: var(--esp-4) 0;
+}
+.ancrage-humeur-btn {
+  width: 52px; height: 52px;
+  border-radius: var(--radius-pleine);
+  border: 3px solid var(--bordure);
+  background: var(--fond-carte); cursor: pointer;
+  font-size: 1.5rem; display: grid; place-items: center;
+  transition: border-color var(--duree-1) var(--courbe), transform var(--duree-1) var(--courbe), background var(--duree-1) var(--courbe);
+}
+.ancrage-humeur-btn:hover  { border-color: var(--bleu-400); transform: scale(1.08); }
+.ancrage-humeur-btn--actif { border-color: var(--c-primary); background: var(--bleu-50); }
+
+.ancrage-historique { margin-top: var(--esp-5); }
+.ancrage-historique h3 { font-size: var(--t-lg); margin-bottom: var(--esp-3); }
+.ancrage-graphique {
+  display: flex; align-items: flex-end; gap: var(--esp-2);
+  height: 80px; padding: var(--esp-2) 0;
+  border-bottom: 2px solid var(--bordure);
+  overflow-x: auto;
+}
+.ancrage-barre-humeur {
+  flex: none; width: 28px;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  background: var(--bleu-300); transition: background var(--duree-1) var(--courbe);
+}
+.ancrage-barre-humeur--1 { background: var(--danger);  height: 16%; }
+.ancrage-barre-humeur--2 { background: var(--alerte);  height: 32%; }
+.ancrage-barre-humeur--3 { background: var(--or-400);  height: 50%; }
+.ancrage-barre-humeur--4 { background: var(--bleu-400); height: 68%; }
+.ancrage-barre-humeur--5 { background: var(--succes);  height: 88%; }
+
+.ancrage-entree {
+  display: flex; align-items: baseline; gap: var(--esp-3);
+  padding: var(--esp-3) var(--esp-4);
+  background: var(--fond-carte); border: 1px solid var(--bordure); border-radius: var(--radius-md);
+}
+.ancrage-entree__date { font-size: var(--t-sm); color: var(--texte-faible); white-space: nowrap; }
+.ancrage-entree__note { font-size: var(--t-sm); color: var(--texte-doux); }

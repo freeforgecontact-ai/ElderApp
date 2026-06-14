@@ -1,0 +1,190 @@
+/* =============================================================
+   Apps-Solidaires — Design tokens
+   Source de vérité unique pour les couleurs, l'espacement,
+   la typographie, les ombres, les rayons et les durées.
+
+   Couleur primaire #0F4C81 = theme-color officiel de ia.pgrg.ca.
+   Accent or = les coeurs jaunes (💛) de la marque PGRG.
+   Le reste de l'échelle est dérivé harmonieusement.
+
+   ► Pour coller les valeurs EXACTES du site : modifie seulement
+     --c-primary et --c-accent ci-dessous, tout en hérite.
+   ► Pour un design 100% carré ("0 coin rond" littéral) :
+     mets --radius-base: 0;  (un seul interrupteur).
+   ============================================================= */
+
+:root {
+  /* ---- Couleur de marque (exacte) ---- */
+  --c-primary: #0F4C81;            /* bleu PGRG — theme-color du site */
+  --c-accent:  #F4B41A;            /* or chaleureux — 💛 */
+
+  /* ---- Échelle bleu (primaire) ---- */
+  --bleu-50:  #F0F6FB;
+  --bleu-100: #DCE9F4;
+  --bleu-200: #B3D0E8;
+  --bleu-300: #7DB0D9;
+  --bleu-400: #4A91C9;
+  --bleu-500: #1E73B8;
+  --bleu-600: #155F9E;
+  --bleu-700: #0F4C81;             /* = --c-primary */
+  --bleu-800: #0B3A63;
+  --bleu-900: #082A47;
+
+  /* ---- Échelle or (accent) ---- */
+  --or-100: #FEF3D6;
+  --or-300: #FBDD8E;
+  --or-400: #F8C955;
+  --or-500: #F4B41A;               /* = --c-accent */
+  --or-600: #D99A0F;
+  --or-700: #B9810A;
+
+  /* ---- Neutres ---- */
+  --blanc:    #FFFFFF;
+  --gris-50:  #F7F9FB;
+  --gris-100: #F2F5F8;
+  --gris-200: #E1E6EB;
+  --gris-300: #C2CAD2;
+  --gris-400: #9AA5B1;
+  --gris-500: #6B7884;
+  --gris-700: #3D4A57;
+  --gris-900: #1F2730;
+  --noir:     #14181D;             /* texte principal (pas noir pur) */
+
+  /* ---- Couleurs sémantiques (toutes AA/AAA sur leur fond) ---- */
+  --succes:        #1E7F4F;
+  --succes-fond:   #E4F3EB;
+  --info:          #0F4C81;
+  --info-fond:     #E5EEF6;
+  --alerte:        #B66A00;        /* avertissement */
+  --alerte-fond:   #FBEFD8;
+  --danger:        #C0392B;        /* fraude, urgence */
+  --danger-fond:   #FBE7E4;
+
+  /* ---- Rôles de surface et de texte ---- */
+  --fond-page:      var(--gris-100);
+  --fond-carte:     var(--blanc);
+  --fond-inverse:   var(--bleu-800);
+  --texte:          var(--noir);
+  --texte-doux:     var(--gris-700);
+  --texte-faible:   var(--gris-500);
+  --texte-inverse:  var(--blanc);
+  --bordure:        var(--gris-200);
+  --bordure-forte:  var(--gris-300);
+  --lien:           var(--bleu-600);
+
+  /* ---- Typographie ---- */
+  --police: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --police-titre: var(--police);
+  --police-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+
+  /* Base 18px pour la lisibilité (accessibilité). Échelle 1.25 */
+  --taille-base: 1.125rem;         /* 18px si racine 16px */
+  --t-xs:   0.78rem;
+  --t-sm:   0.9rem;
+  --t-md:   1.125rem;              /* corps */
+  --t-lg:   1.4rem;
+  --t-xl:   1.75rem;
+  --t-2xl:  2.2rem;
+  --t-3xl:  2.75rem;
+
+  --gras-normal: 400;
+  --gras-moyen:  500;
+  --gras-fort:   600;
+  --gras-extra:  800;
+
+  --interligne: 1.6;
+  --interligne-titre: 1.18;
+
+  /* ---- Espacement (grille stricte de 4px — "même réglé") ---- */
+  --esp-1: 0.25rem;   /* 4  */
+  --esp-2: 0.5rem;    /* 8  */
+  --esp-3: 0.75rem;   /* 12 */
+  --esp-4: 1rem;      /* 16 */
+  --esp-5: 1.5rem;    /* 24 */
+  --esp-6: 2rem;      /* 32 */
+  --esp-7: 3rem;      /* 48 */
+  --esp-8: 4rem;      /* 64 */
+
+  /* ---- Rayons (un seul interrupteur : --radius-base) ---- */
+  --radius-base: 1;                /* mets 0 pour un design 100% carré */
+  --radius-sm: calc(6px  * var(--radius-base));
+  --radius-md: calc(10px * var(--radius-base));
+  --radius-lg: calc(16px * var(--radius-base));
+  --radius-pleine: calc(999px * var(--radius-base));
+
+  /* ---- Ombres (élévation) ---- */
+  --ombre-1: 0 1px 2px rgba(8, 42, 71, 0.08), 0 1px 3px rgba(8, 42, 71, 0.06);
+  --ombre-2: 0 2px 6px rgba(8, 42, 71, 0.10), 0 4px 12px rgba(8, 42, 71, 0.08);
+  --ombre-3: 0 8px 24px rgba(8, 42, 71, 0.14);
+  --anneau-focus: 0 0 0 3px rgba(244, 180, 26, 0.55); /* or, très visible */
+
+  /* ---- Cibles tactiles (accessibilité) ---- */
+  --cible-min: 44px;               /* WCAG 2.2 — taille minimale */
+  --cible-large: 56px;             /* aînés / faible littératie */
+
+  /* ---- Durées et transitions ---- */
+  --duree-1: 120ms;
+  --duree-2: 220ms;
+  --courbe: cubic-bezier(0.2, 0, 0.1, 1);
+
+  /* ---- Largeurs de contenu ---- */
+  --largeur-contenu: 44rem;
+  --largeur-large: 64rem;
+
+  color-scheme: light dark;
+}
+
+/* =============================================================
+   Mode sombre — activable via [data-theme="sombre"] ou auto
+   ============================================================= */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="clair"]) {
+    --fond-page:     #0C1014;
+    --fond-carte:    #161C22;
+    --fond-inverse:  #0B3A63;
+    --texte:         #EAF0F6;
+    --texte-doux:    #B7C2CD;
+    --texte-faible:  #8A97A4;
+    --bordure:       #25303A;
+    --bordure-forte: #36434F;
+    --lien:          #7DB0D9;
+    --info-fond:     #122A40;
+    --succes-fond:   #11271C;
+    --alerte-fond:   #2C2310;
+    --danger-fond:   #2E1714;
+  }
+}
+:root[data-theme="sombre"] {
+  --fond-page:     #0C1014;
+  --fond-carte:    #161C22;
+  --fond-inverse:  #0B3A63;
+  --texte:         #EAF0F6;
+  --texte-doux:    #B7C2CD;
+  --texte-faible:  #8A97A4;
+  --bordure:       #25303A;
+  --bordure-forte: #36434F;
+  --lien:          #7DB0D9;
+  --info-fond:     #122A40;
+  --succes-fond:   #11271C;
+  --alerte-fond:   #2C2310;
+  --danger-fond:   #2E1714;
+}
+
+/* =============================================================
+   Accessibilité — contraste élevé et mouvement réduit
+   ============================================================= */
+@media (prefers-contrast: more) {
+  :root {
+    --texte: #000000;
+    --bordure: var(--gris-500);
+    --bordure-forte: var(--gris-700);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --duree-1: 0ms; --duree-2: 0ms; }
+}
+
+/* Échelle de police agrandie pour aînés / faible littératie
+   (à poser sur <html> ou la racine de l'app) */
+:root[data-echelle="grande"]  { --taille-base: 1.3rem; }
+:root[data-echelle="enorme"]  { --taille-base: 1.55rem; }

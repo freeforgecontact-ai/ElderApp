@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Second départ — soleil levant">
+  <!-- Fond bleu de marque -->
+  <rect width="512" height="512" rx="0" fill="#0F4C81"/>
+  <!-- Horizon -->
+  <rect x="64" y="340" width="384" height="12" rx="6" fill="#F4B41A"/>
+  <!-- Demi-disque soleil -->
+  <path d="M256 340 a100 100 0 0 1 0-200 a100 100 0 0 1 0 200z" fill="#F4B41A" opacity="0.92"/>
+  <!-- Rayons du soleil -->
+  <line x1="256" y1="110" x2="256" y2="80"  stroke="#F4B41A" stroke-width="14" stroke-linecap="round"/>
+  <line x1="340" y1="136" x2="362" y2="114" stroke="#F4B41A" stroke-width="14" stroke-linecap="round"/>
+  <line x1="172" y1="136" x2="150" y2="114" stroke="#F4B41A" stroke-width="14" stroke-linecap="round"/>
+  <line x1="386" y1="220" x2="416" y2="220" stroke="#F4B41A" stroke-width="14" stroke-linecap="round"/>
+  <line x1="126" y1="220" x2="96"  y2="220" stroke="#F4B41A" stroke-width="14" stroke-linecap="round"/>
+  <!-- Chemin / route symbolique -->
+  <path d="M220 352 L240 440 M292 352 L272 440" stroke="#F4B41A" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+</svg>

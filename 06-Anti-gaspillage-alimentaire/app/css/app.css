@@ -1,0 +1,130 @@
+/* Styles propres à Récolte — dons alimentaires.
+   Le gros du style vient de tokens.css + components.css (design system).
+   Variables de référence : --c-primary (#0F4C81), --c-accent (#F4B41A),
+   --t-sm/--t-xs/--taille-base, --fond-carte, --fond-page, --esp-*, --radius-*. */
+
+/* ---- Héros accueil ---- */
+.recolte-hero {
+  background: linear-gradient(160deg, var(--bleu-700), var(--bleu-800));
+  color: var(--texte-inverse);
+  padding: var(--esp-6) var(--esp-4);
+  text-align: center;
+}
+.recolte-hero h1 { color: var(--texte-inverse); }
+.recolte-hero p  { color: var(--bleu-100); max-width: 32rem; margin-inline: auto; }
+
+/* Bandeau « Don gratuit — zéro transaction » */
+.recolte-gratuit {
+  background: var(--c-accent);
+  color: var(--bleu-900);
+  font-weight: 700;
+  text-align: center;
+  padding: var(--esp-2) var(--esp-4);
+  font-size: var(--t-sm);
+  letter-spacing: 0.02em;
+}
+
+/* ---- Carte de don dans la liste ---- */
+.don-carte {
+  background: var(--fond-carte);
+  border: 1px solid var(--bordure);
+  border-radius: var(--radius-lg);
+  padding: var(--esp-4);
+  display: flex;
+  gap: var(--esp-3);
+  align-items: flex-start;
+}
+.don-carte__ico { font-size: 2rem; flex-shrink: 0; line-height: 1; }
+.don-carte__corps { flex: 1; min-width: 0; }
+.don-carte__titre { font-weight: 700; font-size: var(--taille-base); margin: 0 0 var(--esp-1); }
+.don-carte__meta  { font-size: var(--t-sm); color: var(--texte-faible); margin: 0; }
+
+/* Badges de contrainte de froid */
+.badge-froid {
+  display: inline-flex; align-items: center; gap: 0.25rem;
+  font-size: var(--t-xs); font-weight: 600;
+  padding: 2px 8px; border-radius: 999px;
+}
+.badge-froid--ambiant   { background: #E8F5E9; color: #1B5E20; }
+.badge-froid--refrigere { background: #E3F2FD; color: #0D47A1; }
+.badge-froid--congele   { background: #EDE7F6; color: #4527A0; }
+
+/* Statut d'un don */
+.badge-statut {
+  display: inline-flex; align-items: center; gap: 0.25rem;
+  font-size: var(--t-xs); font-weight: 600;
+  padding: 2px 8px; border-radius: 999px;
+}
+.badge-statut--disponible { background: var(--succes-fond);   color: var(--succes); }
+.badge-statut--reserve    { background: var(--alerte-fond);   color: var(--alerte); }
+.badge-statut--recupere   { background: var(--info-fond);     color: var(--info); }
+.badge-statut--expire     { background: var(--fond-page);     color: var(--texte-faible); }
+
+/* ---- Sélecteur de rôle ---- */
+.role-grille {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--esp-4);
+  margin-top: var(--esp-5);
+}
+.role-btn {
+  display: flex; flex-direction: column; align-items: center; gap: var(--esp-2);
+  padding: var(--esp-5) var(--esp-3);
+  background: var(--fond-carte);
+  border: 2px solid var(--bordure);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: var(--taille-base);
+  text-align: center;
+  transition: border-color var(--duree-1), background var(--duree-1);
+}
+.role-btn:hover, .role-btn:focus-visible {
+  border-color: var(--c-primary);
+  background: var(--bleu-50);
+  outline: none;
+}
+.role-btn__ico { font-size: 2.5rem; }
+
+/* Fenêtre de récupération dans le formulaire */
+.fenetre-grille {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--esp-3);
+}
+
+/* ---- Filtre / tri ---- */
+.recolte-filtres {
+  display: flex; gap: var(--esp-2); flex-wrap: wrap;
+  padding: var(--esp-3) var(--esp-4);
+  border-bottom: 1px solid var(--bordure);
+  background: var(--fond-carte);
+}
+
+/* Liste des dons */
+.dons-liste { display: flex; flex-direction: column; gap: var(--esp-3); }
+
+/* Note technique TODO (scaffold local) */
+.recolte-todo {
+  border-left: 4px solid var(--c-accent);
+  background: #FFFDE7;
+  padding: var(--esp-3) var(--esp-4);
+  font-size: var(--t-sm);
+  color: var(--texte-doux);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+/* ---- Compléments design system (non présents dans components.css v actuelle) ---- */
+
+/* Variante d'erreur sur les champs de saisie */
+.sol-input--erreur {
+  border-color: var(--danger) !important;
+  background: var(--danger-fond);
+}
+
+/* Bouton taille petite */
+.sol-btn--sm { min-height: 2.25rem; font-size: var(--t-sm); padding: var(--esp-1) var(--esp-3); }
+
+/* Conteneur flex en ligne avec écart */
+.sol-inline { display: flex; flex-wrap: wrap; align-items: center; }
+.sol-inline--gap2 { gap: var(--esp-2); }

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Mots du quotidien">
+  <!-- Fond bleu primaire -->
+  <rect width="512" height="512" rx="0" fill="#0F4C81"/>
+  <!-- Tige principale -->
+  <line x1="256" y1="420" x2="256" y2="200" stroke="#F4B41A" stroke-width="22" stroke-linecap="round"/>
+  <!-- Feuille gauche -->
+  <path d="M256 300 C200 260 148 270 144 220 C176 190 240 220 256 300Z" fill="#F4B41A" opacity="0.9"/>
+  <!-- Feuille droite -->
+  <path d="M256 260 C310 215 368 225 368 175 C336 145 272 180 256 260Z" fill="#F4B41A"/>
+  <!-- Bourgeon au sommet -->
+  <ellipse cx="256" cy="185" rx="28" ry="36" fill="#F8C955"/>
+  <!-- Sol / base -->
+  <rect x="176" y="418" width="160" height="20" rx="10" fill="#F4B41A" opacity="0.6"/>
+</svg>

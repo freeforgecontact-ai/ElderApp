@@ -1,0 +1,160 @@
+/* Styles propres à Second départ.
+   Le gros du style vient de tokens.css + components.css (design system). */
+
+/* ---- En-tête héro ---- */
+.depart-hero {
+  background: linear-gradient(160deg, var(--bleu-700), var(--bleu-800));
+  color: var(--texte-inverse);
+  padding: var(--esp-6) var(--esp-4);
+  text-align: center;
+}
+.depart-hero h1 { color: var(--texte-inverse); }
+.depart-hero p  { color: var(--bleu-100); max-width: 32rem; margin-inline: auto; }
+
+/* ---- Choix de situation (3 grandes cartes) ---- */
+.depart-situations {
+  display: grid;
+  gap: var(--esp-4);
+  margin: var(--esp-5) 0;
+}
+.depart-situation-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-2);
+  padding: var(--esp-5) var(--esp-4);
+  background: var(--fond-carte);
+  border: 2px solid var(--bordure);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  text-align: center;
+  min-height: var(--cible-large);
+  transition: border-color var(--duree-1) var(--courbe),
+              box-shadow   var(--duree-1) var(--courbe);
+}
+.depart-situation-btn:hover,
+.depart-situation-btn:focus-visible {
+  border-color: var(--c-primary);
+  box-shadow: var(--ombre-2);
+  outline: none;
+}
+.depart-situation-btn--actif {
+  border-color: var(--c-primary);
+  background: var(--info-fond);
+}
+.depart-situation-btn__ico  { font-size: 2.4rem; }
+.depart-situation-btn__nom  { font-size: var(--t-lg); font-weight: var(--gras-fort); color: var(--texte); }
+.depart-situation-btn__desc { font-size: var(--t-sm); color: var(--texte-doux); }
+
+/* ---- Barre de progression étapes ---- */
+.depart-progres-label {
+  font-size: var(--t-sm);
+  color: var(--texte-doux);
+  margin-bottom: var(--esp-2);
+}
+
+/* ---- Étape cochable ---- */
+.depart-etape {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--esp-3);
+  padding: var(--esp-4);
+  background: var(--fond-carte);
+  border: 1px solid var(--bordure);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: opacity var(--duree-1) var(--courbe);
+}
+.depart-etape--faite { opacity: 0.55; }
+.depart-etape__check {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border: 2px solid var(--c-primary);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--fond-carte);
+  transition: background var(--duree-1) var(--courbe);
+}
+.depart-etape--faite .depart-etape__check {
+  background: var(--succes);
+  border-color: var(--succes);
+  color: var(--blanc);
+}
+.depart-etape__corps { flex: 1; }
+.depart-etape__titre { font-weight: var(--gras-fort); font-size: var(--t-md); }
+.depart-etape__cat   { font-size: var(--t-xs); color: var(--texte-faible); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: var(--esp-1); }
+.depart-etape__echeance { font-size: var(--t-xs); color: var(--alerte); margin-top: var(--esp-1); }
+
+/* ---- Filtres de catégorie ---- */
+.depart-filtres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-2);
+  margin: var(--esp-3) 0;
+}
+.depart-filtre-btn {
+  padding: var(--esp-1) var(--esp-3);
+  border: 1.5px solid var(--bordure-forte);
+  border-radius: var(--radius-pleine);
+  background: var(--fond-carte);
+  font-size: var(--t-sm);
+  cursor: pointer;
+  transition: background var(--duree-1) var(--courbe),
+              border-color var(--duree-1) var(--courbe);
+  min-height: var(--cible-min);
+}
+.depart-filtre-btn--actif {
+  background: var(--c-primary);
+  border-color: var(--c-primary);
+  color: var(--texte-inverse);
+}
+
+/* ---- Ressource annuaire ---- */
+.depart-ressource {
+  background: var(--fond-carte);
+  border: 1px solid var(--bordure);
+  border-radius: var(--radius-md);
+  padding: var(--esp-4);
+}
+.depart-ressource__nom    { font-weight: var(--gras-fort); font-size: var(--t-md); margin-bottom: var(--esp-1); }
+.depart-ressource__detail { font-size: var(--t-sm); color: var(--texte-doux); margin-bottom: var(--esp-1); }
+.depart-ressource__tel    { font-size: var(--t-md); font-weight: var(--gras-fort); color: var(--c-primary); }
+.depart-ressource__region { font-size: var(--t-xs); color: var(--texte-faible); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ---- Contact d'urgence ---- */
+.depart-contact {
+  background: var(--fond-carte);
+  border: 1.5px solid var(--bleu-200);
+  border-radius: var(--radius-md);
+  padding: var(--esp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-1);
+}
+.depart-contact__role { font-size: var(--t-xs); color: var(--texte-faible); text-transform: uppercase; letter-spacing: 0.06em; }
+.depart-contact__nom  { font-weight: var(--gras-fort); font-size: var(--t-md); }
+.depart-contact__tel  { font-size: var(--t-lg); font-weight: var(--gras-extra); color: var(--c-primary); }
+
+/* ---- Disclaimer informatif ---- */
+.depart-disclaimer {
+  font-size: var(--t-xs);
+  color: var(--texte-faible);
+  border-top: 1px solid var(--bordure);
+  padding-top: var(--esp-3);
+  margin-top: var(--esp-5);
+  line-height: 1.5;
+}
+
+/* ---- Premier jour — 48 h ---- */
+.depart-48h-badge {
+  display: inline-block;
+  background: var(--or-500);
+  color: var(--bleu-900);
+  font-weight: var(--gras-fort);
+  font-size: var(--t-xs);
+  padding: var(--esp-1) var(--esp-3);
+  border-radius: var(--radius-pleine);
+  margin-bottom: var(--esp-3);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

@@ -1,0 +1,212 @@
+/* ================================================================
+   Lien — aînés anti-isolement
+   Styles propres à cette app (mode kiosque ultra-simple, AAA).
+   Le gros du style vient de tokens.css + components.css.
+   data-echelle="grande" est posé sur #app dans index.html.
+   ================================================================ */
+
+/* ---- Kiosque : plein écran, centrage vertical ---- */
+
+.lien-kiosque {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100dvh - 7rem); /* moins barre + nav */
+  gap: var(--esp-6);
+  padding: var(--esp-5) var(--esp-4);
+  text-align: center;
+}
+
+.lien-bonjour {
+  font-size: var(--t-3xl);
+  font-weight: var(--gras-extra);
+  color: var(--c-primary);
+  margin: 0;
+}
+
+/* ---- Bouton check-in — plein écran, très grand ---- */
+
+.lien-checkin-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-3);
+  padding: var(--esp-6) var(--esp-5);
+  font-size: var(--t-xl);
+  font-weight: var(--gras-fort);
+  min-height: 9rem;
+  width: 100%;
+  max-width: 28rem;
+  border-radius: var(--radius-lg);
+}
+
+/* ---- Grosse icône décorative ---- */
+
+.lien-grosico {
+  font-size: 4rem;
+  line-height: 1;
+  display: block;
+}
+
+/* ---- Carte de confirmation ---- */
+
+.lien-confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-3);
+  max-width: 28rem;
+  width: 100%;
+  padding: var(--esp-6) var(--esp-5);
+}
+
+.lien-confirmation__titre {
+  font-size: var(--t-xl);
+  font-weight: var(--gras-fort);
+  color: var(--succes);
+  margin: 0;
+}
+
+.lien-confirmation__sous {
+  color: var(--texte-doux);
+  margin: 0;
+}
+
+/* ---- Liste de contacts (écran Appeler) ---- */
+
+.lien-contacts-liste {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-4);
+  width: 100%;
+  padding: var(--esp-4) 0;
+}
+
+/* Carte-contact : une rangée large, cible tactile généreuse */
+.lien-contact-carte {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-4);
+  padding: var(--esp-4) var(--esp-5);
+  background: var(--fond-carte);
+  border: 2px solid var(--bordure);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--ombre-1);
+  text-decoration: none;
+  color: var(--texte);
+  min-height: var(--cible-large);
+  transition: background var(--duree-1) var(--courbe),
+              border-color var(--duree-1) var(--courbe),
+              box-shadow var(--duree-1) var(--courbe);
+}
+
+.lien-contact-carte:hover,
+.lien-contact-carte:focus-visible {
+  background: var(--bleu-50);
+  border-color: var(--c-primary);
+  box-shadow: var(--ombre-2), var(--anneau-focus);
+  outline: none;
+}
+
+.lien-contact-carte:active {
+  background: var(--bleu-100);
+  transform: scale(0.98);
+}
+
+/* Avatar texte / photo */
+.lien-avatar {
+  flex-shrink: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-pleine);
+  background: var(--c-primary);
+  color: var(--texte-inverse);
+  font-size: var(--t-xl);
+  font-weight: var(--gras-fort);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lien-avatar__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lien-contact-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-1);
+}
+
+.lien-contact-nom {
+  font-size: var(--t-lg);
+  font-weight: var(--gras-fort);
+}
+
+.lien-contact-role {
+  font-size: var(--t-sm);
+  color: var(--texte-doux);
+}
+
+.lien-contact-appel {
+  font-size: var(--t-2xl);
+  flex-shrink: 0;
+}
+
+/* ---- Grille humeur — 3 grands boutons verticaux ---- */
+
+.lien-humeur-grille {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-4);
+  width: 100%;
+  max-width: 26rem;
+}
+
+.lien-humeur-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-4);
+  padding: var(--esp-4) var(--esp-5);
+  background: var(--fond-carte);
+  border: 2px solid var(--bordure);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--police);
+  font-size: var(--t-lg);
+  color: var(--texte);
+  min-height: 5rem;
+  transition: background var(--duree-1) var(--courbe),
+              border-color var(--duree-1) var(--courbe),
+              box-shadow var(--duree-1) var(--courbe);
+}
+
+.lien-humeur-btn:hover,
+.lien-humeur-btn:focus-visible {
+  border-color: var(--c-primary);
+  box-shadow: var(--anneau-focus);
+  outline: none;
+}
+
+.lien-humeur-btn--actif {
+  background: var(--bleu-50);
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 3px var(--c-primary);
+  font-weight: var(--gras-fort);
+}
+
+.lien-humeur-ico {
+  font-size: var(--t-3xl);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.lien-humeur-label {
+  font-weight: var(--gras-moyen);
+}

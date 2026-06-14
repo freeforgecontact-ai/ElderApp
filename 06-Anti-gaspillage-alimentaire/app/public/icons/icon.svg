@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Récolte — dons alimentaires">
+  <!-- Fond bleu marque -->
+  <rect width="512" height="512" rx="0" fill="#0F4C81"/>
+  <!-- Panier (ovale + tressage suggéré) -->
+  <ellipse cx="256" cy="330" rx="148" ry="80" fill="#155F9E" stroke="#F4B41A" stroke-width="12"/>
+  <rect x="108" y="290" width="296" height="40" rx="10" fill="#155F9E" stroke="#F4B41A" stroke-width="12"/>
+  <!-- Anse du panier -->
+  <path d="M160 290 Q160 200 256 200 Q352 200 352 290" fill="none" stroke="#F4B41A" stroke-width="20" stroke-linecap="round"/>
+  <!-- Feuille verte sortant du panier -->
+  <path d="M256 200 C230 140 180 120 200 80 C230 50 290 100 256 200Z" fill="#2D9E4F"/>
+  <path d="M256 200 C282 140 332 120 312 80" fill="none" stroke="#1A7A35" stroke-width="6" stroke-linecap="round"/>
+  <!-- Tige centrale de la feuille -->
+  <line x1="256" y1="200" x2="256" y2="130" stroke="#1A7A35" stroke-width="6" stroke-linecap="round"/>
+</svg>

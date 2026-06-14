@@ -1,0 +1,218 @@
+/* =============================================================
+   Apps-Solidaires — Bibliothèque de composants
+   Dépend de tokens.css. Préfixe de classe : .sol-
+   Accessibilité : focus visible partout, cibles >= 44px,
+   contrastes AA/AAA, états complets (hover/focus/active/disabled).
+   ============================================================= */
+
+/* ---- Reset léger & base ---- */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 100%; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--police);
+  font-size: var(--taille-base);
+  line-height: var(--interligne);
+  color: var(--texte);
+  background: var(--fond-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4 { font-family: var(--police-titre); line-height: var(--interligne-titre); margin: 0 0 var(--esp-4); font-weight: var(--gras-fort); color: var(--texte); }
+h1 { font-size: var(--t-2xl); font-weight: var(--gras-extra); letter-spacing: -0.01em; }
+h2 { font-size: var(--t-xl); }
+h3 { font-size: var(--t-lg); }
+p  { margin: 0 0 var(--esp-4); }
+a  { color: var(--lien); text-underline-offset: 0.15em; }
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+  box-shadow: var(--anneau-focus);
+  border-radius: var(--radius-sm);
+}
+:focus:not(:focus-visible) { outline: none; }
+
+/* Lien d'évitement (accessibilité clavier) */
+.sol-skip {
+  position: absolute; left: -999px; top: 0; z-index: 100;
+  background: var(--c-primary); color: var(--blanc);
+  padding: var(--esp-3) var(--esp-4); border-radius: var(--radius-md);
+}
+.sol-skip:focus { left: var(--esp-3); top: var(--esp-3); }
+
+/* Masqué visuellement mais lu par les lecteurs d'écran */
+.sol-sr { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+
+/* ---- Mise en page ---- */
+.sol-app { min-height: 100dvh; display: flex; flex-direction: column; }
+.sol-contenu { width: 100%; max-width: var(--largeur-contenu); margin-inline: auto; padding: var(--esp-5) var(--esp-4); flex: 1; }
+.sol-pile { display: flex; flex-direction: column; gap: var(--esp-4); }
+.sol-rangee { display: flex; align-items: center; gap: var(--esp-3); flex-wrap: wrap; }
+.sol-entre { justify-content: space-between; }
+
+/* ---- En-tête / barre supérieure ---- */
+.sol-barre {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--esp-3);
+  padding: var(--esp-3) var(--esp-4);
+  background: var(--c-primary);
+  color: var(--texte-inverse);
+  min-height: var(--cible-large);
+}
+.sol-barre a, .sol-barre .sol-marque { color: var(--texte-inverse); text-decoration: none; }
+.sol-marque { display: flex; align-items: center; gap: var(--esp-2); font-weight: var(--gras-extra); font-size: var(--t-lg); }
+.sol-marque .sol-pastille { width: 1.6em; height: 1.6em; display: grid; place-items: center; background: var(--c-accent); color: var(--bleu-900); border-radius: var(--radius-md); font-weight: var(--gras-extra); }
+
+/* ---- Boutons ---- */
+.sol-btn {
+  --_bg: var(--c-primary);
+  --_fg: var(--blanc);
+  --_bd: transparent;
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--esp-2);
+  min-height: var(--cible-min);
+  padding: var(--esp-3) var(--esp-5);
+  font: inherit; font-weight: var(--gras-fort); line-height: 1;
+  color: var(--_fg); background: var(--_bg);
+  border: 2px solid var(--_bd); border-radius: var(--radius-md);
+  cursor: pointer; text-decoration: none;
+  transition: transform var(--duree-1) var(--courbe), background var(--duree-1) var(--courbe), box-shadow var(--duree-1) var(--courbe), filter var(--duree-1) var(--courbe);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.sol-btn:hover { filter: brightness(1.06); box-shadow: var(--ombre-1); }
+.sol-btn:active { transform: translateY(1px); filter: brightness(0.96); }
+.sol-btn[disabled], .sol-btn[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; box-shadow: none; transform: none; filter: none; }
+
+.sol-btn--accent  { --_bg: var(--c-accent); --_fg: var(--bleu-900); }
+.sol-btn--danger  { --_bg: var(--danger);  --_fg: var(--blanc); }
+.sol-btn--succes  { --_bg: var(--succes);  --_fg: var(--blanc); }
+.sol-btn--fantome { --_bg: transparent; --_fg: var(--c-primary); --_bd: var(--bordure-forte); }
+.sol-btn--fantome:hover { --_bg: var(--bleu-50); }
+.sol-btn--texte   { --_bg: transparent; --_fg: var(--lien); padding-inline: var(--esp-2); }
+.sol-btn--texte:hover { text-decoration: underline; box-shadow: none; filter: none; }
+
+.sol-btn--bloc { width: 100%; }
+.sol-btn--lg { min-height: var(--cible-large); font-size: var(--t-lg); padding: var(--esp-4) var(--esp-6); }
+.sol-btn--xl { min-height: 72px; font-size: var(--t-xl); padding: var(--esp-5) var(--esp-7); }
+
+/* Gros bouton illustré (aînés, faible littératie) : icône + libellé */
+.sol-grosbouton {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--esp-2);
+  width: 100%; min-height: 132px; padding: var(--esp-5);
+  background: var(--fond-carte); color: var(--texte);
+  border: 2px solid var(--bordure); border-radius: var(--radius-lg);
+  font-weight: var(--gras-fort); font-size: var(--t-lg); cursor: pointer;
+  transition: border-color var(--duree-1) var(--courbe), box-shadow var(--duree-1) var(--courbe), transform var(--duree-1) var(--courbe);
+}
+.sol-grosbouton .sol-ico { font-size: 2.6rem; line-height: 1; }
+.sol-grosbouton:hover { border-color: var(--c-primary); box-shadow: var(--ombre-2); }
+.sol-grosbouton:active { transform: translateY(1px); }
+.sol-grosbouton--accent { border-color: var(--or-400); background: var(--or-100); }
+.sol-grosbouton--danger { border-color: var(--danger); background: var(--danger-fond); }
+
+/* ---- Bouton vocal (lecture à voix haute) ---- */
+.sol-vocal {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: var(--cible-min); height: var(--cible-min);
+  background: var(--bleu-50); color: var(--c-primary);
+  border: 1px solid var(--bordure); border-radius: var(--radius-pleine);
+  cursor: pointer; flex: none;
+}
+.sol-vocal:hover { background: var(--bleu-100); }
+.sol-vocal[aria-pressed="true"] { background: var(--c-primary); color: var(--blanc); }
+
+/* ---- Étiquette picto (texte + pictogramme) ---- */
+.sol-picto { display: inline-flex; align-items: center; gap: var(--esp-3); }
+.sol-picto img, .sol-picto .sol-ico { width: 2.4em; height: 2.4em; object-fit: contain; flex: none; }
+
+/* ---- Cartes ---- */
+.sol-carte {
+  background: var(--fond-carte);
+  border: 1px solid var(--bordure);
+  border-radius: var(--radius-lg);
+  padding: var(--esp-5);
+  box-shadow: var(--ombre-1);
+}
+.sol-carte--plate { box-shadow: none; }
+.sol-carte__titre { margin: 0 0 var(--esp-2); font-size: var(--t-lg); }
+.sol-carte--actionnable { cursor: pointer; transition: box-shadow var(--duree-1) var(--courbe), transform var(--duree-1) var(--courbe); }
+.sol-carte--actionnable:hover { box-shadow: var(--ombre-2); transform: translateY(-1px); }
+
+/* ---- Alertes / bannières ---- */
+.sol-alerte {
+  display: flex; gap: var(--esp-3); align-items: flex-start;
+  padding: var(--esp-4); border-radius: var(--radius-md);
+  border-left: 4px solid var(--info);
+  background: var(--info-fond); color: var(--texte);
+}
+.sol-alerte__ico { font-size: 1.4rem; line-height: 1.3; flex: none; }
+.sol-alerte--succes { border-left-color: var(--succes); background: var(--succes-fond); }
+.sol-alerte--alerte { border-left-color: var(--alerte); background: var(--alerte-fond); }
+.sol-alerte--danger { border-left-color: var(--danger); background: var(--danger-fond); }
+
+/* ---- Badges ---- */
+.sol-badge {
+  display: inline-flex; align-items: center; gap: var(--esp-1);
+  padding: 0.15em 0.6em; font-size: var(--t-sm); font-weight: var(--gras-fort);
+  border-radius: var(--radius-pleine); background: var(--bleu-100); color: var(--bleu-800);
+}
+.sol-badge--accent { background: var(--or-100); color: var(--or-700); }
+.sol-badge--danger { background: var(--danger-fond); color: var(--danger); }
+.sol-badge--succes { background: var(--succes-fond); color: var(--succes); }
+
+/* ---- Champs de formulaire ---- */
+.sol-champ { display: flex; flex-direction: column; gap: var(--esp-2); margin-bottom: var(--esp-4); }
+.sol-label { font-weight: var(--gras-fort); }
+.sol-aide { font-size: var(--t-sm); color: var(--texte-faible); }
+.sol-input, .sol-select, .sol-textarea {
+  font: inherit; color: var(--texte); background: var(--fond-carte);
+  min-height: var(--cible-min);
+  padding: var(--esp-3) var(--esp-4);
+  border: 2px solid var(--bordure-forte); border-radius: var(--radius-md);
+  width: 100%;
+}
+.sol-textarea { min-height: 7rem; resize: vertical; }
+.sol-input:hover, .sol-select:hover, .sol-textarea:hover { border-color: var(--gris-400); }
+.sol-input[aria-invalid="true"] { border-color: var(--danger); }
+.sol-erreur { color: var(--danger); font-size: var(--t-sm); font-weight: var(--gras-moyen); }
+
+/* Interrupteur (switch) accessible */
+.sol-switch { display: inline-flex; align-items: center; gap: var(--esp-3); cursor: pointer; min-height: var(--cible-min); }
+.sol-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.sol-switch__piste { width: 52px; height: 30px; background: var(--gris-300); border-radius: var(--radius-pleine); position: relative; transition: background var(--duree-1) var(--courbe); flex: none; }
+.sol-switch__bille { position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; background: var(--blanc); border-radius: var(--radius-pleine); box-shadow: var(--ombre-1); transition: transform var(--duree-1) var(--courbe); }
+.sol-switch input:checked + .sol-switch__piste { background: var(--succes); }
+.sol-switch input:checked + .sol-switch__piste .sol-switch__bille { transform: translateX(22px); }
+.sol-switch input:focus-visible + .sol-switch__piste { box-shadow: var(--anneau-focus); }
+
+/* ---- Liste / checklist ---- */
+.sol-liste { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--esp-2); }
+.sol-liste__item { display: flex; align-items: center; gap: var(--esp-3); padding: var(--esp-3) var(--esp-4); background: var(--fond-carte); border: 1px solid var(--bordure); border-radius: var(--radius-md); min-height: var(--cible-min); }
+.sol-liste__item--fait { color: var(--texte-faible); }
+.sol-liste__item--fait .sol-liste__txt { text-decoration: line-through; }
+.sol-check { width: 26px; height: 26px; border: 2px solid var(--bordure-forte); border-radius: var(--radius-sm); display: grid; place-items: center; flex: none; }
+.sol-liste__item--fait .sol-check { background: var(--succes); border-color: var(--succes); color: var(--blanc); }
+
+/* ---- Barre de progression ---- */
+.sol-progres { height: 12px; background: var(--gris-200); border-radius: var(--radius-pleine); overflow: hidden; }
+.sol-progres__barre { height: 100%; background: var(--c-accent); border-radius: inherit; transition: width var(--duree-2) var(--courbe); }
+
+/* ---- Navigation par onglets bas (mobile/PWA) ---- */
+.sol-nav { display: flex; background: var(--fond-carte); border-top: 1px solid var(--bordure); position: sticky; bottom: 0; }
+.sol-nav__item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: var(--esp-2); min-height: var(--cible-large); color: var(--texte-faible); text-decoration: none; font-size: var(--t-xs); font-weight: var(--gras-moyen); }
+.sol-nav__item .sol-ico { font-size: 1.5rem; }
+.sol-nav__item[aria-current="page"] { color: var(--c-primary); }
+
+/* ---- Pastille hors-ligne / état réseau ---- */
+.sol-offline { display: inline-flex; align-items: center; gap: var(--esp-2); font-size: var(--t-sm); color: var(--texte-doux); }
+.sol-point { width: 10px; height: 10px; border-radius: var(--radius-pleine); background: var(--succes); flex: none; }
+.sol-point--hors { background: var(--gris-400); }
+
+/* ---- Utilitaires ---- */
+.sol-centre { text-align: center; }
+.sol-muet { color: var(--texte-faible); }
+.sol-mt-0 { margin-top: 0; } .sol-mb-0 { margin-bottom: 0; }
+.sol-gap-2 { gap: var(--esp-2); } .sol-gap-4 { gap: var(--esp-4); }
+.sol-grille { display: grid; gap: var(--esp-4); }
+@media (min-width: 540px) { .sol-grille--2 { grid-template-columns: 1fr 1fr; } }

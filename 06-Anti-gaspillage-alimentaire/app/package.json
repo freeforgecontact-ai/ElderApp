@@ -1,0 +1,21 @@
+{
+  "name": "recolte",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/copy-ds.mjs",
+    "prebuild": "node scripts/copy-ds.mjs",
+    "dev": "dotnet fable watch src --run vite",
+    "build": "dotnet fable src && vite build",
+    "preview": "vite preview",
+    "clean": "dotnet fable clean src --yes"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}

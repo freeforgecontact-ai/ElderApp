@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Bouclier anti-arnaque">
+  <rect width="512" height="512" rx="0" fill="#0F4C81"/>
+  <path d="M256 64l160 56v128c0 100-66 172-160 200-94-28-160-100-160-200V120l160-56z" fill="#155F9E" stroke="#F4B41A" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M196 258l40 40 84-92" fill="none" stroke="#F4B41A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

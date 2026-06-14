@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Notes perso">
+  <!-- Fond discret couleur marque primaire -->
+  <rect width="512" height="512" rx="0" fill="#0F4C81"/>
+  <!-- Corps du carnet de notes -->
+  <rect x="128" y="96" width="256" height="320" rx="18" fill="#155F9E"/>
+  <!-- Spirale / reliure gauche -->
+  <rect x="104" y="120" width="40" height="20" rx="10" fill="#F4B41A"/>
+  <rect x="104" y="180" width="40" height="20" rx="10" fill="#F4B41A"/>
+  <rect x="104" y="240" width="40" height="20" rx="10" fill="#F4B41A"/>
+  <rect x="104" y="300" width="40" height="20" rx="10" fill="#F4B41A"/>
+  <rect x="104" y="360" width="40" height="20" rx="10" fill="#F4B41A"/>
+  <!-- Lignes de texte -->
+  <rect x="168" y="168" width="168" height="14" rx="7" fill="#F4B41A" opacity="0.9"/>
+  <rect x="168" y="210" width="140" height="14" rx="7" fill="#FFFFFF" opacity="0.45"/>
+  <rect x="168" y="252" width="152" height="14" rx="7" fill="#FFFFFF" opacity="0.45"/>
+  <rect x="168" y="294" width="120" height="14" rx="7" fill="#FFFFFF" opacity="0.45"/>
+  <rect x="168" y="336" width="100" height="14" rx="7" fill="#FFFFFF" opacity="0.25"/>
+</svg>

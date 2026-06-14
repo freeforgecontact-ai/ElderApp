@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Ancrage — vague apaisante">
+  <!-- Fond carré arrondi bleu primaire -->
+  <rect width="512" height="512" rx="0" fill="#0F4C81"/>
+  <!-- Cercle intérieur doux (or accent) -->
+  <circle cx="256" cy="256" r="184" fill="none" stroke="#F4B41A" stroke-width="14" opacity="0.6"/>
+  <!-- Vague apaisante principale — courbe douce centrée -->
+  <path d="M92 278 Q142 204 196 278 Q250 352 304 278 Q358 204 420 278"
+        fill="none" stroke="#ffffff" stroke-width="28"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Petite vague supérieure (écho calme) -->
+  <path d="M132 214 Q178 166 224 214 Q270 262 316 214 Q362 166 400 214"
+        fill="none" stroke="#F4B41A" stroke-width="16"
+        stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+</svg>

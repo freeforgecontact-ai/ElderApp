@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Lien — aînés anti-isolement">
+  <!-- Fond bleu primaire -->
+  <rect width="512" height="512" rx="0" fill="#0F4C81"/>
+  <!-- Maison (toit + corps) en bleu légèrement plus clair -->
+  <path d="M256 160 L136 264 L168 264 L168 376 L344 376 L344 264 L376 264 Z"
+        fill="#155F9E" stroke="#F4B41A" stroke-width="10" stroke-linejoin="round"/>
+  <!-- Porte -->
+  <rect x="220" y="296" width="72" height="80" rx="6"
+        fill="#0F4C81" stroke="#F4B41A" stroke-width="8"/>
+  <!-- Coeur or au-dessus de la maison -->
+  <path d="M256 148 C256 148 224 118 210 130 C196 142 200 164 256 192
+           C312 164 316 142 302 130 C288 118 256 148 256 148 Z"
+        fill="#F4B41A"/>
+</svg>

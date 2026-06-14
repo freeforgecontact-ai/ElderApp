@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Boussole nouveaux arrivants">
+  <rect width="512" height="512" rx="0" fill="#0F4C81"/>
+  <!-- Cadran de boussole -->
+  <circle cx="256" cy="256" r="168" fill="#155F9E" stroke="#F4B41A" stroke-width="12"/>
+  <!-- Aiguille Nord (jaune) -->
+  <polygon points="256,100 244,260 268,260" fill="#F4B41A"/>
+  <!-- Aiguille Sud (blanc) -->
+  <polygon points="256,412 244,252 268,252" fill="#ffffff" opacity="0.85"/>
+  <!-- Pivot central -->
+  <circle cx="256" cy="256" r="18" fill="#F4B41A"/>
+  <!-- Marquage N -->
+  <text x="256" y="158" text-anchor="middle" fill="#F4B41A" font-size="36" font-family="sans-serif" font-weight="bold">N</text>
+</svg>
