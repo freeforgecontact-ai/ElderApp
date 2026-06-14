@@ -12,6 +12,10 @@
 _serve/
 _captures/
 
+# ---- Build natif (regenerable en CI) ----
+/web/
+/build-*/
+
 # ---- OS / éditeurs ----
 .vs/
 .idea/

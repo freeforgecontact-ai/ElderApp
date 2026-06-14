@@ -1,0 +1,95 @@
+name: build-natif
+on:
+  workflow_dispatch: {}
+permissions:
+  contents: write
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with: { dotnet-version: '10.0.x' }
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - name: Compiler les apps en web statique
+        run: bash tooling/build-web.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: web
+          path: web
+
+  android:
+    needs: web
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        slug: [bouclier, boussole, lien, mots, recolte, ancrage, depart]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - uses: actions/setup-java@v4
+        with: { distribution: 'temurin', java-version: '17' }
+      - uses: android-actions/setup-android@v3
+      - uses: actions/download-artifact@v4
+        with: { name: web, path: web }
+      - name: Scaffold Capacitor
+        run: node tooling/scaffold.mjs ${{ matrix.slug }} android build-${{ matrix.slug }}
+      - name: Build APK (debug)
+        run: |
+          cd build-${{ matrix.slug }}
+          npm install
+          npx cap add android
+          npx cap sync android
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+      - name: Renommer l'APK
+        run: cp build-${{ matrix.slug }}/android/app/build/outputs/apk/debug/app-debug.apk AppsSolidaires-${{ matrix.slug }}-Android.apk
+      - name: Publier dans la Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: app-${{ matrix.slug }}
+          name: Apps-Solidaires — ${{ matrix.slug }}
+          files: AppsSolidaires-${{ matrix.slug }}-Android.apk
+
+  desktop:
+    needs: web
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+        slug: [bouclier, boussole, lien, mots, recolte, ancrage, depart]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - uses: actions/download-artifact@v4
+        with: { name: web, path: web }
+      - name: Scaffold Electron
+        run: node tooling/scaffold.mjs ${{ matrix.slug }} electron build-${{ matrix.slug }}
+      - name: Build installeur bureau
+        run: |
+          cd build-${{ matrix.slug }}
+          npm install
+          npm run dist
+      - name: Renommer l'installeur
+        shell: bash
+        run: |
+          cd build-${{ matrix.slug }}/dist
+          case "${{ matrix.os }}" in
+            windows-latest) f=$(ls *.exe 2>/dev/null | head -1); out=AppsSolidaires-${{ matrix.slug }}-Windows.exe;;
+            macos-latest)   f=$(ls *.dmg 2>/dev/null | head -1); out=AppsSolidaires-${{ matrix.slug }}-Mac.dmg;;
+            ubuntu-latest)  f=$(ls *.AppImage 2>/dev/null | head -1); out=AppsSolidaires-${{ matrix.slug }}-Linux.AppImage;;
+          esac
+          cp "$f" "$GITHUB_WORKSPACE/$out"
+      - name: Publier dans la Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: app-${{ matrix.slug }}
+          name: Apps-Solidaires — ${{ matrix.slug }}
+          files: AppsSolidaires-${{ matrix.slug }}-*
