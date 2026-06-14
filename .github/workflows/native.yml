@@ -73,10 +73,17 @@ jobs:
       - name: Scaffold Electron
         run: node tooling/scaffold.mjs ${{ matrix.slug }} electron build-${{ matrix.slug }}
       - name: Build installeur bureau
+        shell: bash
         run: |
           cd build-${{ matrix.slug }}
           npm install
-          npm run dist
+          for i in 1 2 3; do
+            echo "=== tentative build $i ==="
+            npm run dist && exit 0
+            echo "echec, nouvelle tentative dans 12s..."
+            sleep 12
+          done
+          exit 1
       - name: Renommer l'installeur
         shell: bash
         run: |
